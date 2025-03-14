@@ -1,0 +1,27 @@
+function onLoad()
+    createClearButton()
+end
+
+function createClearButton()
+    self.createButton({
+        click_function = "clearAllHighlights",
+        function_owner = self,
+        label          = "Clear All Highlights",
+        position       = {0, 0.3, 0},
+        width          = 850,
+        height         = 350,
+        font_size      = 85,
+        color          = {0, 0, 0, 1},    -- Black background
+        font_color     = {1, 1, 1, 1}     -- White text
+    })
+end
+
+function clearAllHighlights(player_color, alt_click)
+    local objects = getAllObjects()
+    for _, obj in ipairs(objects) do
+        if obj.highlightOff then
+            obj.highlightOff()
+        end
+    end
+    broadcastToAll("All highlights have been cleared!", {1, 1, 1})
+end
