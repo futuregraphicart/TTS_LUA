@@ -1,0 +1,7 @@
+-- When this object collides with a card or deck, clear its highlight.
+function onCollisionEnter(collision_info)
+    local obj = collision_info.collision_object
+    if obj and (obj.tag == "Card" or obj.tag == "Deck") then
+        obj.highlightOff()  -- Clear the card's highlight
+    end
+end
